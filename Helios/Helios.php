@@ -20,14 +20,22 @@ class Helios
     protected $input;
 
     /**
+     * Analyse a statement's sentiment.
+     *
+     * @var Helios\Modules\NLP\Sentiment\Sentiment
+     */
+    protected $sentiment;
+
+    /**
      * Set-up Helios.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->output = new \Helios\Modules\Output\Terminal;
-        $this->input  = new \Helios\Modules\Input\Terminal;
+        $this->output    = new \Helios\Modules\Output\Terminal;
+        $this->input     = new \Helios\Modules\Input\Terminal;
+        $this->sentiment = new \Helios\Modules\NLP\Sentiment\PHPInsight;
     }
 
     /**
@@ -52,6 +60,7 @@ class Helios
     {
         while (($input = $this->input->request('What can I do for you?')) != 'Goodbye') {
             $this->output->write('You said: ' . $input);
+            $this->output->write('I believe that is ' . $this->sentiment->check($input));
         }
     }
 
