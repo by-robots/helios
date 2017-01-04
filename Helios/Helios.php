@@ -50,11 +50,9 @@ class Helios
      */
     public function commsLoop()
     {
-        do {
-            $input = $this->input->request('What can I do for you?');
+        while (($input = $this->input->request('What can I do for you?')) != 'Goodbye') {
             $this->output->write('You said: ' . $input);
-
-        } while ($input != 'Goodbye');
+        }
     }
 
     /**
