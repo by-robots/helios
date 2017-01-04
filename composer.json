@@ -1,0 +1,13 @@
+{
+    "name": "dang/helios",
+    "description": "An AI assistant.",
+    "type": "project",
+    "authors": [{
+        "name": "Dan Gates",
+        "email": "dan.gates@me.com"
+    }],
+    "require": {
+        "filp/whoops": "^2.1",
+        "league/climate": "^3.2"
+    }
+}
