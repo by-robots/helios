@@ -17,7 +17,7 @@ class Json implements Storage
     public function __construct()
     {
         if (!file_exists($this->file)) {
-            file_put_contents($this->file, json_encode([]));
+            $this->_write([]);
         }
     }
 
@@ -46,5 +46,28 @@ class Json implements Storage
     public function get($key)
     {
         //
+    }
+
+    /**
+     * Open the file.
+     *
+     * @return array
+     */
+    private function _open()
+    {
+        $file = file_get_contents($this->file);
+        return json_decode($file);
+    }
+
+    /**
+     * Write the file.
+     *
+     * @param string $contents
+     *
+     * @return void
+     */
+    private function _write($contents)
+    {
+        file_put_contents($this->file, json_encode($contents));
     }
 }
