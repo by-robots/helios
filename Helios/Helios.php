@@ -8,7 +8,7 @@ class Helios
     /**
      * For outward communication.
      *
-     * @var Helios\Modules\Output
+     * @var Helios\Modules\Output\Output
      */
     protected $output;
 
@@ -19,7 +19,7 @@ class Helios
      */
     public function __construct()
     {
-        $this->output = new \Helios\Modules\Output;
+        $this->output = new \Helios\Modules\Output\Terminal;
     }
 
     /**

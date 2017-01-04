@@ -1,9 +1,9 @@
-<?php namespace Helios\Modules;
+<?php namespace Helios\Modules\Output;
 
 /**
  * Manage outward communication.
  */
-class Output
+class Terminal implements Output
 {
     /**
      * Object for writing to the Terminal.
@@ -17,9 +17,9 @@ class Output
      *
      * @return void
      */
-    public function __construct($output = null)
+    public function __construct()
     {
-        $this->output = !$output ? new \League\CLImate\CLImate : $output;
+        $this->output = new \League\CLImate\CLImate;
     }
 
     /**
