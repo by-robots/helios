@@ -13,6 +13,13 @@ class Helios
     protected $output;
 
     /**
+     * For inward communication.
+     *
+     * @var Helios\Modules\Input\Input
+     */
+    protected $input;
+
+    /**
      * Set-up Helios.
      *
      * @return void
@@ -20,6 +27,7 @@ class Helios
     public function __construct()
     {
         $this->output = new \Helios\Modules\Output\Terminal;
+        $this->input  = new \Helios\Modules\Input\Terminal;
     }
 
     /**
@@ -30,5 +38,32 @@ class Helios
     public function wakeUp()
     {
         $this->output->write('I am awake.');
+        $this->commsLoop();
+        $this->goToSleep();
+        exit;
+    }
+
+    /**
+     * Start the communication loop.
+     *
+     * @return void
+     */
+    public function commsLoop()
+    {
+        do {
+            $input = $this->input->request('What can I do for you?');
+            $this->output->write('You said: ' . $input);
+
+        } while ($input != 'Goodbye');
+    }
+
+    /**
+     * Shut Helios down.
+     *
+     * @return void
+     */
+    public function goToSleep()
+    {
+        $this->output->write('Goodbye.');
     }
 }

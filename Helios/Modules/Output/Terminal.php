@@ -1,8 +1,5 @@
 <?php namespace Helios\Modules\Output;
 
-/**
- * Manage outward communication.
- */
 class Terminal implements Output
 {
     /**
