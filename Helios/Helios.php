@@ -40,10 +40,13 @@ class Helios
      */
     public function __construct()
     {
-        $this->output    = new \Helios\Modules\Output\Terminal;
-        $this->input     = new \Helios\Modules\Input\Terminal;
-        $this->storage   = new \Helios\Modules\Storage\Json;
-        $this->sentiment = new \Helios\Modules\NLP\Sentiment\PHPInsight;
+        // Load the modules config and set-up with the set options
+        $config = new \Noodlehaus\Config(__DIR__ . '/../Config/Modules.php');
+
+        $this->output    = $config->get('Output');
+        $this->input     = $config->get('Input');
+        $this->storage   = $config->get('Storage');
+        $this->sentiment = $config->get('Sentiment');
     }
 
     /**
