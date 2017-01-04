@@ -48,7 +48,6 @@ class Helios
         $this->output->write('I am awake.');
         $this->commsLoop();
         $this->goToSleep();
-        exit;
     }
 
     /**
