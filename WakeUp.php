@@ -4,7 +4,7 @@
  * Check that we have the necessary dependencies, if we do load them.
  */
 if (!file_exists(__DIR__ . '/vendor/autoload.php')) {
-    throw new Exception('I am missing dependencies. Run composer install.');
+    throw new Exception('MISSING_DEPENDENCIES');
     exit;
 }
 
@@ -21,7 +21,7 @@ $whoops->register();
  * Load in Helios.
  */
 if (!class_exists('\\Helios\\Helios')) {
-    throw new Exception('I can not find myself.');
+    throw new Exception('HELIOS_NOT_FOUND');
 }
 
 $helios = new Helios\Helios;

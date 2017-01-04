@@ -32,7 +32,11 @@ class Json implements Storage
      */
     public function set($key, $value)
     {
-        //
+        $contents       = $this->_open();
+        $contents[$key] = $value;
+        $this->_write($contents);
+
+        return true;
     }
 
     /**
@@ -45,7 +49,12 @@ class Json implements Storage
      */
     public function get($key)
     {
-        //
+        $contents = $this->_open();
+        if (!$contents[$key]) {
+            throw new Exception('MEMORY_NOT_FOUND');
+        }
+
+        return $contents[$key];
     }
 
     /**
@@ -62,7 +71,7 @@ class Json implements Storage
     /**
      * Write the file.
      *
-     * @param string $contents
+     * @param array $contents
      *
      * @return void
      */
