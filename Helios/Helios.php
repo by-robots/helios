@@ -20,6 +20,13 @@ class Helios
     protected $input;
 
     /**
+     * Helios' storage.
+     *
+     * @var Helios\Modules\Storage\Storage
+     */
+    protected $storage;
+
+    /**
      * Analyse a statement's sentiment.
      *
      * @var Helios\Modules\NLP\Sentiment\Sentiment
@@ -35,6 +42,7 @@ class Helios
     {
         $this->output    = new \Helios\Modules\Output\Terminal;
         $this->input     = new \Helios\Modules\Input\Terminal;
+        $this->storage   = new \Helios\Modules\Storage\Json;
         $this->sentiment = new \Helios\Modules\NLP\Sentiment\PHPInsight;
     }
 
