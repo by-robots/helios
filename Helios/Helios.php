@@ -6,32 +6,11 @@
 class Helios
 {
     /**
-     * For outward communication.
+     * Contains Helios' modules.
      *
-     * @var Helios\Modules\Output\Output
+     * @var Helios\Modules\Modules
      */
-    protected $output;
-
-    /**
-     * For inward communication.
-     *
-     * @var Helios\Modules\Input\Input
-     */
-    protected $input;
-
-    /**
-     * Helios' storage.
-     *
-     * @var Helios\Modules\Storage\Storage
-     */
-    protected $storage;
-
-    /**
-     * Analyse a statement's sentiment.
-     *
-     * @var Helios\Modules\NLP\Sentiment\Sentiment
-     */
-    protected $sentiment;
+    private $modules;
 
     /**
      * Set-up Helios.
@@ -40,13 +19,7 @@ class Helios
      */
     public function __construct()
     {
-        // Load the modules config and set-up with the set options
-        $config = new \Noodlehaus\Config(__DIR__ . '/../Config/Modules.php');
-
-        $this->output    = $config->get('Output');
-        $this->input     = $config->get('Input');
-        $this->storage   = $config->get('Storage');
-        $this->sentiment = $config->get('Sentiment');
+        $this->modules = new Modules\Modules;
     }
 
     /**
@@ -56,7 +29,7 @@ class Helios
      */
     public function wakeUp()
     {
-        $this->output->write('I am awake.');
+        $this->modules->output->write('I am awake.');
         $this->commsLoop();
         $this->goToSleep();
     }
@@ -68,9 +41,9 @@ class Helios
      */
     public function commsLoop()
     {
-        while (($input = $this->input->request('What can I do for you?')) != 'Goodbye') {
-            $this->output->write('You said: ' . $input);
-            $this->output->write('I believe that is ' . $this->sentiment->check($input));
+        while (($input = $this->modules->input->request('What can I do for you?')) != 'Goodbye') {
+            $this->modules->output->write('I believe that is ' .
+                $this->modules->sentiment->check($input));
         }
     }
 
@@ -81,6 +54,6 @@ class Helios
      */
     public function goToSleep()
     {
-        $this->output->write('Goodbye.');
+        $this->modules->output->write('Goodbye.');
     }
 }
