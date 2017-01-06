@@ -29,14 +29,18 @@ class OpenWeatherMap implements Weather
     /**
      * Set-up.
      *
+     * @param Helios\Modules\Input\Input   $input
+     * @param Helios\Modules\Output\Output $output
+     *
      * @return void
      */
-    public function __construct()
-    {
-        $config        = new \Noodlehaus\Config(__DIR__ . '/../../Config/APIKeys.php');
+    public function __construct(
+        \Helios\Modules\Input\Input $input,
+        \Helios\Modules\Output\Output $output
+    ) {
+        $config        = new \Noodlehaus\Config(__DIR__ . '/../../../Config/APIKeys.php');
         $this->api     = new \Cmfcmf\OpenWeatherMap($config->get('OpenWeatherMap'));
         $this->output  = $output;
-        $this->storage = $storage;
     }
 
     /**

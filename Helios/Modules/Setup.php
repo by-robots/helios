@@ -1,5 +1,4 @@
-<?php namespace Helios\Modules\Setup;
-use Helios\Modules\Modules;
+<?php namespace Helios\Modules;
 
 /**
  * Gettin' to know you,
@@ -37,8 +36,11 @@ class Setup
      *
      * @return void
      */
-    public function __construct($output, $input, $storage)
-    {
+    public function __construct(
+        \Helios\Modules\Output\Output $output,
+        \Helios\Modules\Input\Input $input,
+        \Helios\Modules\Storage\Storage $storage
+    ) {
         $this->output  = $output;
         $this->input   = $input;
         $this->storage = $storage;
@@ -52,7 +54,7 @@ class Setup
     public function shouldRun()
     {
         try {
-            $this->storage->get('user');
+            $this->storage->get('user.name');
         } catch (\Exception $e) {
             return true;
         }

@@ -6,20 +6,19 @@
 class Helios
 {
     /**
-     * Contains Helios' modules.
-     *
-     * @var Helios\Modules\Modules
-     */
-    private $modules;
-
-    /**
      * Set-up Helios.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->modules = new Modules\Modules;
+        $container       = require_once __DIR__ . '/../Config/Modules.php';
+        $this->output    = $container->get('Helios\Modules\Output\Output');
+        $this->input     = $container->get('Helios\Modules\Input\Input');
+        $this->storage   = $container->get('Helios\Modules\Storage\Storage');
+        $this->setup     = $container->get('Helios\Modules\Setup');
+        $this->weather   = $container->get('Helios\Modules\Weather\Weather');
+        $this->sentiment = $container->get('Helios\Modules\NLP\Sentiment\Sentiment');
     }
 
     /**
@@ -29,13 +28,14 @@ class Helios
      */
     public function wakeUp()
     {
-        $this->modules->output->write('I am awake.');
+        $this->output->write('I am awake.');
 
-        if ($this->modules->setup->shouldRun()) {
-            $this->modules->setup->run();
+        // Do we need to run Helios' set-up?
+        if ($this->setup->shouldRun()) {
+            $this->setup->run();
         }
 
-        $this->modules->output->write('Hello, ' . $this->modules->storage->get('user.name') . '.');
+        $this->output->write('Hello, ' . $this->storage->get('user.name') . '.');
 
         $this->commsLoop();
         $this->goToSleep();
@@ -48,9 +48,9 @@ class Helios
      */
     public function commsLoop()
     {
-        while (($input = $this->modules->input->request('What can I do for you?')) != 'Goodbye') {
-            $this->modules->output->write('I believe that is ' .
-                $this->modules->sentiment->check($input));
+        while (($input = $this->input->request('What can I do for you?')) != 'Goodbye') {
+            $this->output->write('I believe that is ' .
+                $this->sentiment->check($input));
         }
     }
 
@@ -61,6 +61,6 @@ class Helios
      */
     public function goToSleep()
     {
-        $this->modules->output->write('Goodbye.');
+        $this->output->write('Goodbye.');
     }
 }
