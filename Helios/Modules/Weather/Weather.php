@@ -11,4 +11,18 @@ interface Weather
      * @return int
      */
     public function currentTemperature();
+
+    /**
+     * Build an object containing information about the current weather. Keys
+     * that should be included:
+     *
+     * - (float) temperature
+     * - (float) wind_direction
+     * - (float) wind_speed
+     * - (float) cloud_cover
+     * - (bool)  precipitation
+     *
+     * @return object
+     */
+    public function getWeatherObject();
 }

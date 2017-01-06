@@ -22,7 +22,6 @@ $container->add('Helios\Modules\Setup')
 
 // For the weather.
 $container->add('Helios\Modules\Weather\Weather', 'Helios\Modules\Weather\OpenWeatherMap')
-    ->withArgument('Helios\Modules\Input\Input')
     ->withArgument('Helios\Modules\Output\Output');
 
 // For sentiment analysis.

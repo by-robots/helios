@@ -73,5 +73,10 @@ class Setup
             'user.name',
             $this->input->request('Hello. What should I call you?')
         );
+
+        $this->storage->set(
+            'user.location',
+            $this->input->request('What\'s your closest major city?')
+        );
     }
 }

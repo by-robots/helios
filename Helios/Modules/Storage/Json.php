@@ -17,7 +17,7 @@ class Json implements Storage
     public function __construct()
     {
         if (!file_exists($this->file)) {
-            $this->_write([]);
+            $this->_write(new \stdClass);
         }
     }
 
@@ -33,7 +33,7 @@ class Json implements Storage
     public function set($key, $value)
     {
         $contents       = $this->_open();
-        $contents[$key] = $value;
+        $contents->$key = $value;
         $this->_write($contents);
 
         return true;

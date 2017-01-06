@@ -58,8 +58,8 @@ class Helios
 
                 case 'weather':
                 case 'Weather':
-                    $temperature = $this->weather->currentTemperature();
-                    $this->output->write('The temperature is ' . $temperature . '.');
+                    $weather = $this->weather->getWeatherObject();
+                    $this->output->write('The temperature is ' . $weather->temperature . ' degrees.');
                     break;
 
                 default:
