@@ -1,8 +1,7 @@
 <?php namespace Helios\Modules;
 
 /**
- * Contains instances of all of the modules Helios is using. Allows for them to
- * be passed between other modules.
+ * Contains instances of all of the modules Helios is using.
  */
 class Modules
 {
@@ -28,6 +27,13 @@ class Modules
     public $storage;
 
     /**
+     * For setting up Helios when it has no memory stored.
+     *
+     * @var Helios\Setup\Setup
+     */
+    public $setup;
+
+    /**
      * Analyse a statement's sentiment.
      *
      * @var Helios\Modules\NLP\Sentiment\Sentiment
@@ -43,5 +49,6 @@ class Modules
         $this->input     = $config->get('Input');
         $this->storage   = $config->get('Storage');
         $this->sentiment = $config->get('Sentiment');
+        $this->setup     = new \Helios\Modules\Setup\Setup($this->output, $this->input, $this->storage);
     }
 }

@@ -30,6 +30,11 @@ class Helios
     public function wakeUp()
     {
         $this->modules->output->write('I am awake.');
+
+        if ($this->modules->setup->shouldRun()) {
+            $this->modules->output->write('Set-up should run.');
+        }
+
         $this->commsLoop();
         $this->goToSleep();
     }
