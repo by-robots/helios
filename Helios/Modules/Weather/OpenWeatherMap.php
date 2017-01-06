@@ -46,18 +46,18 @@ class OpenWeatherMap implements Weather
     /**
      * Get the current temperature, rounded to nearest whole number.
      *
-     * @return int
+     * @return float
      */
     public function currentTemperature()
     {
         try {
-            $weather = $this->api->getWeather('London', 'imperial', 'en');
+            $weather = $this->api->getWeather('London', 'metric', 'en');
         } catch (\Cmfcmf\OpenWeatherMap\Exception $e) {
             $this->output->write('Sorry, something went wrong: ' . $e->getMessage() . '(' . $e->getCode() . ')');
         } catch (\Exception $e) {
             $this->output->write('Sorry, something went wrong: ' . $e->getMessage() . '(' . $e->getCode() . ')');
         }
 
-        return round($weather->temperature);
+        return $weather->temperature;
     }
 }

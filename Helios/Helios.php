@@ -48,9 +48,23 @@ class Helios
      */
     public function commsLoop()
     {
-        while (($input = $this->input->request('What can I do for you?')) != 'Goodbye') {
-            $this->output->write('I believe that is ' .
-                $this->sentiment->check($input));
+        while (true) {
+            $input = $this->input->request('What can I do for you?');
+
+            switch ($input) {
+                case 'goodbye':
+                case 'Goodbye':
+                    return;
+
+                case 'weather':
+                case 'Weather':
+                    $temperature = $this->weather->currentTemperature();
+                    $this->output->write('The temperature is ' . $temperature . '.');
+                    break;
+
+                default:
+                    $this->output->write('I believe that is ' . $this->sentiment->check($input));
+            }
         }
     }
 
