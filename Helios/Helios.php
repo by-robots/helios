@@ -32,8 +32,10 @@ class Helios
         $this->modules->output->write('I am awake.');
 
         if ($this->modules->setup->shouldRun()) {
-            $this->modules->output->write('Set-up should run.');
+            $this->modules->setup->run();
         }
+
+        $this->modules->output->write('Hello, ' . $this->modules->storage->get('user.name') . '.');
 
         $this->commsLoop();
         $this->goToSleep();

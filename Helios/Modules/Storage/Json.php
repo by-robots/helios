@@ -26,7 +26,7 @@ class Json implements Storage
      * doesn't exist or update if it does.
      *
      * @param string $key
-     * @param string $value
+     * @param mixed  $value
      *
      * @return bool TRUE on success, FALSE on failure
      */
@@ -44,17 +44,17 @@ class Json implements Storage
      *
      * @param string $key
      *
-     * @return string
+     * @return mixed
      * @throws Exception
      */
     public function get($key)
     {
         $contents = $this->_open();
-        if (!$contents[$key]) {
+        if (!$contents->$key) {
             throw new Exception('MEMORY_NOT_FOUND');
         }
 
-        return $contents[$key];
+        return $contents->$key;
     }
 
     /**

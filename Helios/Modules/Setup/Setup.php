@@ -59,4 +59,17 @@ class Setup
 
         return false;
     }
+
+    /**
+     * Do the set-up.
+     *
+     * @return void
+     */
+    public function run()
+    {
+        $this->storage->set(
+            'user.name',
+            $this->input->request('Hello. What should I call you?')
+        );
+    }
 }
