@@ -7,7 +7,8 @@
  */
 return [
     'Output'    => new \Helios\Modules\Output\Terminal,
-    'Input'     =>  new \Helios\Modules\Input\Terminal,
+    'Input'     => new \Helios\Modules\Input\Terminal,
     'Storage'   => new \Helios\Modules\Storage\Json,
+    'Weather'   => new \Helios\Modules\Weather\OpenWeatherMap,
     'Sentiment' => new \Helios\Modules\NLP\Sentiment\PHPInsight,
 ];

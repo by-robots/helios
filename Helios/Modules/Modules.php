@@ -29,7 +29,7 @@ class Modules
     /**
      * For setting up Helios when it has no memory stored.
      *
-     * @var Helios\Setup\Setup
+     * @var Helios\Modules\Setup\Setup
      */
     public $setup;
 
