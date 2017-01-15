@@ -20,7 +20,7 @@ interface Weather
      * - (float) wind_direction
      * - (float) wind_speed
      * - (float) cloud_cover
-     * - (bool)  precipitation
+     * - (float) precipitation
      *
      * @return object
      */

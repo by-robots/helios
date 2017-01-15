@@ -1,5 +1,7 @@
 <?php namespace Helios;
 
+use Helios\Modules\ResponseBuilders\Weather as WeatherResponse;
+
 /**
  * Helios' brain. Responsible for managing the AI.
  */
@@ -12,13 +14,13 @@ class Helios
      */
     public function __construct()
     {
-        $container       = require_once __DIR__ . '/../Config/Modules.php';
-        $this->output    = $container->get('Helios\Modules\Output\Output');
-        $this->input     = $container->get('Helios\Modules\Input\Input');
-        $this->storage   = $container->get('Helios\Modules\Storage\Storage');
-        $this->setup     = $container->get('Helios\Modules\Setup');
-        $this->weather   = $container->get('Helios\Modules\Weather\Weather');
-        $this->sentiment = $container->get('Helios\Modules\NLP\Sentiment\Sentiment');
+        $this->container = require_once __DIR__ . '/../Config/Modules.php';
+        $this->output    = $this->container->get('Helios\Modules\Output\Output');
+        $this->input     = $this->container->get('Helios\Modules\Input\Input');
+        $this->storage   = $this->container->get('Helios\Modules\Storage\Storage');
+        $this->setup     = $this->container->get('Helios\Modules\Setup');
+        $this->weather   = $this->container->get('Helios\Modules\Weather\Weather');
+        $this->sentiment = $this->container->get('Helios\Modules\NLP\Sentiment\Sentiment');
     }
 
     /**
@@ -58,8 +60,10 @@ class Helios
 
                 case 'weather':
                 case 'Weather':
-                    $weather = $this->weather->getWeatherObject();
-                    $this->output->write('The temperature is ' . $weather->temperature . ' degrees.');
+                    $weather  = $this->weather->getWeatherObject();
+                    $response = new WeatherResponse;
+
+                    $this->output->write($response->respond($weather));
                     break;
 
                 default:

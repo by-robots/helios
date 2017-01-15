@@ -1,5 +1,10 @@
 <?php namespace Helios\Modules\Weather;
 
+use Cmfcmf\OpenWeatherMap as Source;
+use Cmfcmf\OpenWeatherMap\Exception as OWMException;
+use Helios\Modules\Output\Output;
+use Noodlehaus\Config;
+
 /**
  * Define the weather interface.
  */
@@ -26,10 +31,10 @@ class OpenWeatherMap implements Weather
      *
      * @return void
      */
-    public function __construct(\Helios\Modules\Output\Output $output)
+    public function __construct(Output $output)
     {
-        $config        = new \Noodlehaus\Config(__DIR__ . '/../../../Config/APIKeys.php');
-        $this->api     = new \Cmfcmf\OpenWeatherMap($config->get('OpenWeatherMap'));
+        $config        = new Config(__DIR__ . '/../../../Config/APIKeys.php');
+        $this->api     = new Source($config->get('OpenWeatherMap'));
         $this->output  = $output;
     }
 
@@ -52,7 +57,7 @@ class OpenWeatherMap implements Weather
      * - (float) wind_direction
      * - (float) wind_speed
      * - (float) cloud_cover
-     * - (bool)  precipitation
+     * - (flaot) precipitation
      *
      * @return object
      */
@@ -65,7 +70,7 @@ class OpenWeatherMap implements Weather
         $object->wind_direction = $weather->wind->direction->getValue();
         $object->wind_speed     = $weather->wind->speed->getValue();
         $object->cloud_cover    = $weather->clouds->getValue();
-        $object->precipitation  = $weather->precipitation->getValue() == 'no' ? false : true;
+        $object->precipitation  = $weather->precipitation->getValue();
 
         return $object;
     }
@@ -79,7 +84,7 @@ class OpenWeatherMap implements Weather
     {
         try {
             $weather = $this->api->getWeather('London', 'metric', 'en');
-        } catch (\Cmfcmf\OpenWeatherMap\Exception $e) {
+        } catch (OWMException $e) {
             $this->output->write('Sorry, something went wrong: ' . $e->getMessage() . '(' . $e->getCode() . ')');
         } catch (\Exception $e) {
             $this->output->write('Sorry, something went wrong: ' . $e->getMessage() . '(' . $e->getCode() . ')');
