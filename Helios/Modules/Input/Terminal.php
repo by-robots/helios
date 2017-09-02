@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\Input;
+<?php
+
+namespace Helios\Modules\Input;
 
 class Terminal implements Input
 {

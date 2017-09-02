@@ -1,4 +1,6 @@
-<?php namespace Helios;
+<?php
+
+namespace Helios;
 
 use Helios\Modules\ResponseBuilders\Weather as WeatherResponse;
 

@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\Weather;
+<?php
+
+namespace Helios\Modules\Weather;
 
 /**
  * Define the weather interface.

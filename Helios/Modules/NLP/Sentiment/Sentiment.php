@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\NLP\Sentiment;
+<?php
+
+namespace Helios\Modules\NLP\Sentiment;
 
 /**
  * For retrieving the sentiment of a given string of text.

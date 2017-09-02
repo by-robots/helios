@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\Weather;
+<?php
+
+namespace Helios\Modules\Weather;
 
 use Cmfcmf\OpenWeatherMap as Source;
 use Cmfcmf\OpenWeatherMap\Exception as OWMException;

@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\Output;
+<?php
+
+namespace Helios\Modules\Output;
 
 class Terminal implements Output
 {

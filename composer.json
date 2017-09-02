@@ -18,5 +18,8 @@
        "psr-4": {
            "Helios\\": "Helios/"
        }
-   }
+   },
+    "require-dev": {
+        "phpunit/phpunit": "^6.2"
+    }
 }

@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\NLP\Sentiment;
+<?php
+
+namespace Helios\Modules\NLP\Sentiment;
 
 /**
  * PHPInsight implementation.

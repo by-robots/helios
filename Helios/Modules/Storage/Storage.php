@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\Storage;
+<?php
+
+namespace Helios\Modules\Storage;
 
 /**
  * Describes a consistent storage implementation.

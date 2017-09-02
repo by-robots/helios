@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\ResponseBuilders;
+<?php
+
+namespace Helios\Modules\ResponseBuilders;
 
 class Weather implements Response
 {

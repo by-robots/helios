@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\ResponseBuilders;
+<?php
+
+namespace Helios\Modules\ResponseBuilders;
 
 /**
  * For building friendly responses to input data.

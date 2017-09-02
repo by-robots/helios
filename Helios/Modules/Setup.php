@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules;
+<?php
+
+namespace Helios\Modules;
 
 /**
  * Gettin' to know you,

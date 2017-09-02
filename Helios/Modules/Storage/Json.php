@@ -1,4 +1,6 @@
-<?php namespace Helios\Modules\Storage;
+<?php
+
+namespace Helios\Modules\Storage;
 
 class Json implements Storage
 {
