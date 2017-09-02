@@ -33,9 +33,9 @@ class OpenWeatherMap implements Weather
      */
     public function __construct(Output $output)
     {
-        $config        = new Config(__DIR__ . '/../../../Config/APIKeys.php');
-        $this->api     = new Source($config->get('OpenWeatherMap'));
-        $this->output  = $output;
+        $config       = new Config(__DIR__ . '/../../../Config/APIKeys.php');
+        $this->api    = new Source($config->get('OpenWeatherMap'));
+        $this->output = $output;
     }
 
     /**

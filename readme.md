@@ -1,4 +1,6 @@
 # Helios
+![](https://vignette4.wikia.nocookie.net/deusex/images/5/55/Helios_infolink.jpg/revision/latest?cb=20140909120548&path-prefix=en)
+
 An AI assistant.
 
 ## Errors
