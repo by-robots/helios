@@ -22,7 +22,6 @@ class Helios
         $this->storage   = $this->container->get('Helios\Modules\Storage\Storage');
         $this->setup     = $this->container->get('Helios\Modules\Setup');
         $this->weather   = $this->container->get('Helios\Modules\Weather\Weather');
-        $this->sentiment = $this->container->get('Helios\Modules\NLP\Sentiment\Sentiment');
     }
 
     /**
@@ -69,7 +68,7 @@ class Helios
                     break;
 
                 default:
-                    $this->output->write('I believe that is ' . $this->sentiment->check($input));
+                    $this->output->write('TO-DO!');
             }
         }
     }
