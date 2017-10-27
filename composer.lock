@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "48b80848ef1e40545106c124a5a6f5bd",
+    "content-hash": "9b92b14d57831b544da03695b0eca2a8",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -270,6 +270,100 @@
                 "service"
             ],
             "time": "2017-05-10T09:20:27+00:00"
+        },
+        {
+            "name": "patrickschur/language-detection",
+            "version": "v3.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/patrickschur/language-detection.git",
+                "reference": "c8d54cf095d883dcdd358cffd2d8c2940fd47282"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/patrickschur/language-detection/zipball/c8d54cf095d883dcdd358cffd2d8c2940fd47282",
+                "reference": "c8d54cf095d883dcdd358cffd2d8c2940fd47282",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mbstring": "*",
+                "php": "^7"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^6"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LanguageDetection\\": "src/LanguageDetection"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Schur",
+                    "email": "patrick_schur@outlook.de"
+                }
+            ],
+            "description": "A language detection library for PHP. Detects the language from a given text string.",
+            "homepage": "https://github.com/patrickschur/language-detection",
+            "keywords": [
+                "detect",
+                "detection",
+                "language"
+            ],
+            "time": "2017-08-19T22:28:43+00:00"
+        },
+        {
+            "name": "patrickschur/stanford-nlp-tagger",
+            "version": "v0.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/patrickschur/stanford-nlp-tagger.git",
+                "reference": "5e28cae083aee998719ed49213f91d0f6ff8327b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/patrickschur/stanford-nlp-tagger/zipball/5e28cae083aee998719ed49213f91d0f6ff8327b",
+                "reference": "5e28cae083aee998719ed49213f91d0f6ff8327b",
+                "shasum": ""
+            },
+            "require": {
+                "patrickschur/language-detection": "^3",
+                "php": "^7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "StanfordTagger\\": "src/StanfordTagger"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Patrick Schur",
+                    "email": "patrick_schur@outlook.de"
+                }
+            ],
+            "description": "PHP wrapper for the Stanford Natural Language Processing library. Supports POSTagger and CRFClassifier.",
+            "homepage": "https://github.com/patrickschur/stanford-nlp-tagger",
+            "keywords": [
+                "classifier",
+                "language",
+                "natural-language-processing",
+                "ner",
+                "nlp",
+                "pos",
+                "tagger",
+                "wrapper"
+            ],
+            "time": "2017-08-21T16:38:21+00:00"
         },
         {
             "name": "psr/container",

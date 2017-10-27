@@ -17,10 +17,11 @@ class Helios
     public function __construct()
     {
         $this->container = require_once __DIR__ . '/../Config/Modules.php';
-        $this->output    = $this->container->get('Helios\Modules\Output\Output');
         $this->input     = $this->container->get('Helios\Modules\Input\Input');
-        $this->storage   = $this->container->get('Helios\Modules\Storage\Storage');
+        $this->nlp       = $this->container->get('Helios\Modules\NLP\NLP');
+        $this->output    = $this->container->get('Helios\Modules\Output\Output');
         $this->setup     = $this->container->get('Helios\Modules\Setup');
+        $this->storage   = $this->container->get('Helios\Modules\Storage\Storage');
     }
 
     /**
@@ -59,7 +60,9 @@ class Helios
                     return;
 
                 default:
-                    $this->output->write('TO-DO!');
+                    $tagged = $this->nlp->parseSentence($input);
+                    var_dump($tagged);
+                    die;
             }
         }
     }
