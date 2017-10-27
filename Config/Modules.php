@@ -23,6 +23,10 @@ $container->add('Helios\Modules\Setup')
 // NLP
 $container->add('Helios\Modules\NLP\NLP', new Helios\Modules\NLP\Stanford);
 
+// Interpretation. This should be the last item added as it requires access to
+// the container.
+$container->add('Helios\Modules\Interpret\Interpret', new Helios\Modules\Interpret\Web($container));
+
 /**
  * Return the container for use in the Helios\Modules\Modules class.
  */

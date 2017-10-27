@@ -61,8 +61,7 @@ class Helios
 
                 default:
                     $tagged = $this->nlp->parseSentence($input);
-                    var_dump($tagged);
-                    die;
+                    $this->output->write('Processed as: ' . $tagged);
             }
         }
     }
