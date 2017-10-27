@@ -31,4 +31,16 @@ class Web implements Interpret
             'what' => [],
         ];
     }
+
+    /**
+     * Decide how to act upon a sentence.
+     *
+     * @param array $sentence
+     *
+     * @return Helios\Modules\Action\Action
+     */
+    public function try(array $sentence)
+    {
+        //
+    }
 }

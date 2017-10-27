@@ -60,6 +60,13 @@ class OpenWeatherMap implements Action, Weather
      */
     public function act()
     {
-        //
+        try {
+            $location = $this->storage->get('user.location');
+        } catch (\Exception $e) {
+            $this->output->write('No location available. Defaulting to London, UK.');
+            $location = 'london';
+        }
+
+        $this->weatherNow($location);
     }
 }
