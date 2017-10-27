@@ -20,10 +20,6 @@ $container->add('Helios\Modules\Setup')
     ->withArgument('Helios\Modules\Input\Input')
     ->withArgument('Helios\Modules\Storage\Storage');
 
-// For the weather.
-$container->add('Helios\Modules\Weather\Weather', 'Helios\Modules\Weather\OpenWeatherMap')
-    ->withArgument('Helios\Modules\Output\Output');
-
 /**
  * Return the container for use in the Helios\Modules\Modules class.
  */

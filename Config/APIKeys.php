@@ -7,6 +7,4 @@
  *
  * @var array
  */
-return [
-    'OpenWeatherMap' => 'ce8486c10d4a88b642971a5a6f267207',
-];
+return [];

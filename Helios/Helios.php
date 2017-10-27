@@ -21,7 +21,6 @@ class Helios
         $this->input     = $this->container->get('Helios\Modules\Input\Input');
         $this->storage   = $this->container->get('Helios\Modules\Storage\Storage');
         $this->setup     = $this->container->get('Helios\Modules\Setup');
-        $this->weather   = $this->container->get('Helios\Modules\Weather\Weather');
     }
 
     /**
@@ -58,14 +57,6 @@ class Helios
                 case 'goodbye':
                 case 'Goodbye':
                     return;
-
-                case 'weather':
-                case 'Weather':
-                    $weather  = $this->weather->getWeatherObject();
-                    $response = new WeatherResponse;
-
-                    $this->output->write($response->respond($weather));
-                    break;
 
                 default:
                     $this->output->write('TO-DO!');
