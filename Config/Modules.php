@@ -29,7 +29,13 @@ $container->add('Helios\Modules\NLP\NLP', new Helios\Modules\NLP\Stanford);
 // ********** Actions
 // Allows Helios to perform pre-defined actions. Used in conjuction with NLP
 // and the interpretation (below).
-$container->add('Helios\Modules\Actions\Weather\Weather', new Helios\Modules\Actions\Weather\WeatherService);
+$container->add(
+    'Helios\Modules\Actions\Weather\Weather',
+    new Helios\Modules\Actions\Weather\OpenWeatherMap(
+        $container->get('Helios\Modules\Output\Output'),
+        $container->get('Helios\Modules\Storage\Storage')
+    )
+);
 
 // ********** Interpretation.
 // This should be the last item added as it requires access to the container.

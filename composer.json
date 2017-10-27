@@ -11,7 +11,8 @@
         "league/climate": "^3.2",
         "hassankhan/config": "^0.10.0",
         "league/container": "^2.2",
-        "patrickschur/stanford-nlp-tagger": "^0.2.0"
+        "patrickschur/stanford-nlp-tagger": "^0.2.0",
+        "cmfcmf/openweathermap-php-api": "^2.2"
     },
     "autoload": {
        "psr-4": {

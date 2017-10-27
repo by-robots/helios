@@ -26,7 +26,7 @@ class Web implements Interpret
     {
         $this->web = [
             'get'  => [
-                'weather' => $container->get('Helios\Modules\Weather\Weather'),
+                'weather' => $container->get('Helios\Modules\Actions\Weather\Weather'),
             ],
             'what' => [],
         ];
