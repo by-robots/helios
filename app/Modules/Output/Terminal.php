@@ -27,7 +27,7 @@ class Terminal implements Output
      * Write text to the Terminal.
      *
      * @param string $text
-     * @param string $method
+     * @param string $method Options: info|comment|question|error
      *
      * @return void
      */

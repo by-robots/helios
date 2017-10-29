@@ -42,6 +42,14 @@ class Web implements Interpret
      */
     public function try(array $sentence)
     {
-        //
+        if (!isset($sentence['VB']) or !isset($sentence['NN'])) {
+            throw new \Exception('SENTENCE_INCOMPLETE');
+        }
+
+        if (!isset($this->web[$sentence['VB']][$sentence['NN']])) {
+            throw new \Exception('NO_ACTION');
+        }
+
+        return $this->web[$sentence['VB']][$sentence['NN']];
     }
 }

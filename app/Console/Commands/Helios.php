@@ -72,8 +72,17 @@ class Helios extends Command
 
                 default:
                     $sentence = app(NLP::class)->parseSentence($input);
-                    $execute  = app(Interpret::class)->try($sentence);
-                    $execute->act();
+
+                    try {
+                        $execute = app(Interpret::class)->try($sentence);
+                    } catch (\Exception $e) {
+                        app(Output::class)->write('No action available. Input not understood or invalid.', 'error');
+                    }
+
+                    if (isset($execute)) {
+                        $execute->act();
+                        unset($execute);
+                    }
             }
         }
     }

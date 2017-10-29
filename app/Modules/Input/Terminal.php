@@ -15,7 +15,7 @@ class Terminal implements Input
      */
     public function request($text)
     {
-        app(Output::class)->write($text);
+        app(Output::class)->write($text, 'question');
         return trim(fgets(STDIN));
     }
 }

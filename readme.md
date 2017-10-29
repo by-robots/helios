@@ -14,5 +14,8 @@ the resultant folder into `./Programs`.
 ## Errors
 Exceptions thrown, and what they mean.
 
-- `MEMORY_NOT_FOUND` - A data value was attempted to be retrieved from the memory
-store but was not found.
+- `MEMORY_NOT_FOUND` - A data value was attempted to be retrieved from the
+memory store but was not found.
+- `SENTENCE_INCOMPLETE` - The supplied input could not be interpreted. Input
+should contain one verb and one noun.
+- `NO_ACTION` - No action is currently available for the given input.
