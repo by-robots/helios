@@ -1,9 +1,12 @@
-.DS_Store
+.env
+
+/.idea
+
+/database/memory.sqlite
 
 /Programs/*
 !/Programs/.gitkeep
 
-/Storage/*
-!/Storage/.gitkeep
+/Storage/memory.json
 
-/vendor/
+/vendor
