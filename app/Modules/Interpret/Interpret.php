@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\Interpret;
+namespace App\Modules\Interpret;
 
 interface Interpret
 {
@@ -9,7 +9,7 @@ interface Interpret
      *
      * @param array $sentence
      *
-     * @return Helios\Modules\Actions\Action
+     * @return App\Modules\Actions\Action
      */
     public function try(array $sentence);
 }

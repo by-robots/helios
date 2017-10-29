@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\Input;
+namespace App\Modules\Input;
 
 /**
  * Define a set of methods an input class must implement in order to be used

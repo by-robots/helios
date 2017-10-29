@@ -2,7 +2,11 @@
 
 /.idea
 
+/database/memory.sqlite
+
 /Programs/*
 !/Programs/.gitkeep
+
+/Storage/memory.json
 
 /vendor

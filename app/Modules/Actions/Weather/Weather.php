@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\Actions\Weather;
+namespace App\Modules\Actions\Weather;
 
 interface Weather
 {

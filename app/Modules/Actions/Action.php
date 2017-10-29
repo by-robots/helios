@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\Actions;
+namespace App\Modules\Actions;
 
 /**
  * Actions are classes that can be used at the users request. An action may

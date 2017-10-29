@@ -1,7 +1,8 @@
 <?php
 
-namespace Helios\Modules\Interpret;
+namespace App\Modules\Interpret;
 
+use App\Modules\Actions\Weather\Weather;
 use League\Container\Container;
 
 /**
@@ -22,11 +23,11 @@ class Web implements Interpret
      *
      * @return void.
      */
-    public function __construct(Container $container)
+    public function __construct()
     {
         $this->web = [
             'get'  => [
-                'weather' => $container->get('Helios\Modules\Actions\Weather\Weather'),
+                'weather' => app(Weather::class),
             ],
             'what' => [],
         ];
@@ -37,7 +38,7 @@ class Web implements Interpret
      *
      * @param array $sentence
      *
-     * @return Helios\Modules\Action\Action
+     * @return App\Modules\Action\Action
      */
     public function try(array $sentence)
     {

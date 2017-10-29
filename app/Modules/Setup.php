@@ -1,6 +1,9 @@
 <?php
 
-namespace Helios\Modules;
+namespace App\Modules;
+
+use App\Modules\Input\Input;
+use App\Modules\Storage\Storage;
 
 /**
  * Gettin' to know you,
@@ -9,46 +12,6 @@ namespace Helios\Modules;
 class Setup
 {
     /**
-     * For outward communication.
-     *
-     * @var Helios\Modules\Output\Output
-     */
-    public $output;
-
-    /**
-     * For inward communication.
-     *
-     * @var Helios\Modules\Input\Input
-     */
-    public $input;
-
-    /**
-     * Helios' storage.
-     *
-     * @var Helios\Modules\Storage\Storage
-     */
-    public $storage;
-
-    /**
-     * Set-up Setup.
-     *
-     * @param Helios\Modules\Output\Output   $output
-     * @param Helios\Modules\Input\Input     $input
-     * @param Helios\Modules\Storage\Storage $storage
-     *
-     * @return void
-     */
-    public function __construct(
-        \Helios\Modules\Output\Output $output,
-        \Helios\Modules\Input\Input $input,
-        \Helios\Modules\Storage\Storage $storage
-    ) {
-        $this->output  = $output;
-        $this->input   = $input;
-        $this->storage = $storage;
-    }
-
-    /**
      * Should set-up be run?
      *
      * @return BOOL
@@ -56,7 +19,7 @@ class Setup
     public function shouldRun()
     {
         try {
-            $this->storage->get('user.name');
+            app(Storage::class)->get('user.name');
         } catch (\Exception $e) {
             return true;
         }
@@ -71,9 +34,9 @@ class Setup
      */
     public function run()
     {
-        $this->storage->set(
+        app(Storage::class)->set(
             'user.name',
-            $this->input->request('Hello. What should I call you?')
+            app(Input::class)->request('Hello. What should I call you?')
         );
     }
 }

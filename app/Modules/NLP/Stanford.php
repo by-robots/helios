@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\NLP;
+namespace App\Modules\NLP;
 
 use StanfordTagger\POSTagger;
 

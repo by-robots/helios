@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\NLP;
+namespace App\Modules\NLP;
 
 /**
  * Define a set of methods an input class must implement in order to be used

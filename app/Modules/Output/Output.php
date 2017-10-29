@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\Output;
+namespace App\Modules\Output;
 
 /**
  * Define a set of methods an output class must implement in order to be used

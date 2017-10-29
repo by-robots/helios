@@ -1,39 +1,39 @@
 <?php
 
-namespace Helios\Modules\Actions\Weather;
+namespace App\Modules\Actions\Weather;
 
-use Helios\Modules\Actions\Action;
-use Helios\Modules\Output\Output;
-use Helios\Modules\Storage\Storage;
+use App\Modules\Actions\Action;
+use App\Modules\Output\Output;
+use App\Modules\Storage\Storage;
 
 class OpenWeatherMap implements Action, Weather
 {
     /**
      * For outward communication.
      *
-     * @var Helios\Modules\Output\Output
+     * @var App\Modules\Output\Output
      */
     public $output;
 
     /**
      * For inward communication.
      *
-     * @var Helios\Modules\Input\Input
+     * @var App\Modules\Input\Input
      */
     public $input;
 
     /**
      * Helios' storage.
      *
-     * @var Helios\Modules\Storage\Storage
+     * @var App\Modules\Storage\Storage
      */
     public $storage;
 
     /**
      * Set-up everything we need.
      *
-     * @param Helios\Modules\Output\Output   $output
-     * @param Helios\Modules\Storage\Storage $storage
+     * @param App\Modules\Output\Output   $output
+     * @param App\Modules\Storage\Storage $storage
      *
      * @return void
      */

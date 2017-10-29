@@ -1,6 +1,6 @@
 <?php
 
-namespace Helios\Modules\Storage;
+namespace App\Modules\Storage;
 
 class Json implements Storage
 {
@@ -9,7 +9,7 @@ class Json implements Storage
      *
      * @var string
      */
-    private $file = __DIR__ . '/../../../Storage/Memory.json';
+    private $file = __DIR__ . '/../../../Storage/memory.json';
 
     /**
      * Set-up.

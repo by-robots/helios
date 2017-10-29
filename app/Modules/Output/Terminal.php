@@ -1,35 +1,38 @@
 <?php
 
-namespace Helios\Modules\Output;
+namespace App\Modules\Output;
+
+use Symfony\Component\Console\Output\ConsoleOutput;
 
 class Terminal implements Output
 {
     /**
-     * Object for writing to the Terminal.
+     * Contains the output class.
      *
-     * @var League\CLImate\CLImate
+     * @var Symfony\Component\Console\Output\ConsoleOutput
      */
-    protected $output;
+    private $output;
 
     /**
-     * Set-up the class.
+     * Set-up.
      *
      * @return void
      */
     public function __construct()
     {
-        $this->output = new \League\CLImate\CLImate;
+        $this->output = new ConsoleOutput;
     }
 
     /**
      * Write text to the Terminal.
      *
      * @param string $text
+     * @param string $method
      *
      * @return void
      */
-    public function write($text)
+    public function write($text, $method = 'info')
     {
-        $this->output->out($text);
+        $this->output->writeln("<$method>$text</$method>");
     }
 }
