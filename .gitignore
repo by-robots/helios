@@ -1,5 +1,8 @@
-/vendor
-/.idea
-Homestead.json
-Homestead.yaml
 .env
+
+/.idea
+
+/Programs/*
+!/Programs/.gitkeep
+
+/vendor
