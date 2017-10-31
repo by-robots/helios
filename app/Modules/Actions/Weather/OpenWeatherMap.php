@@ -5,6 +5,7 @@ namespace App\Modules\Actions\Weather;
 use App\Modules\Actions\Action;
 use App\Modules\Output\Output;
 use App\Modules\Storage\Storage;
+use Cmfcmf\OpenWeatherMap as Service;
 
 class OpenWeatherMap implements Action, Weather
 {
@@ -48,15 +49,27 @@ class OpenWeatherMap implements Action, Weather
      *
      * @param string $location
      *
-     * @return string
+     * @return void
      */
     public function weatherNow($location)
     {
-        //
+        $service = new Service(env('OPEN_WEATHER_MAP_API'));
+
+        try {
+            $weather = $service->getWeather($location, 'metric', 'en');
+        } catch(\Exception $e) {
+            $this->output->write('Error: ' . $e->getMessage(), 'error');
+            return;
+        }
+
+        $this->output->write($weather->temperature->getValue() . ' Celcius, ' .
+            $weather->weather->description . '.');
     }
 
     /**
      * Repond to an action request.
+     *
+     * @return void
      */
     public function act()
     {
