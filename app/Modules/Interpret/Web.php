@@ -2,6 +2,7 @@
 
 namespace App\Modules\Interpret;
 
+use App\Modules\Actions\Debugging;
 use App\Modules\Actions\Weather\Weather;
 use League\Container\Container;
 
@@ -26,10 +27,12 @@ class Web implements Interpret
     public function __construct()
     {
         $this->web = [
-            'get'  => [
+            'get' => [
                 'weather' => app(Weather::class),
             ],
-            'what' => [],
+            'toggle' => [
+                'debug' => new Debugging,
+            ]
         ];
     }
 

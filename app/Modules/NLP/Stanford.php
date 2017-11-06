@@ -37,7 +37,21 @@ class Stanford implements NLP
         // The result will contain words Penn Part of Speech Tags.
         // A key is available here: https://cs.nyu.edu/grishman/jet/guide/PennPOS.html
         $result = $this->parser->tag($sentence);
+
+        app('debug')->message($this->_debug($result));
         return $this->_toArray($result);
+    }
+
+    /**
+     * Calculate the debug message.
+     *
+     * @param string $result
+     *
+     * @return string
+     */
+    public function _debug($result)
+    {
+        return "NLP\Stanford: $result";
     }
 
     /**

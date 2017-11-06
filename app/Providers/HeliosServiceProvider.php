@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use App\Modules\Actions\Weather\OpenWeatherMap as WeatherProvider;
 use App\Modules\Actions\Weather\Weather as WeatherContract;
+use App\Modules\Debugging;
 use App\Modules\Input\Input as InputContract;
 use App\Modules\Input\Terminal as InputProvider;
 use App\Modules\Interpret\Interpret as InterpretContract;
@@ -26,6 +27,9 @@ class HeliosServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        // Debugging
+        $this->app->singleton('debug', Debugging::class);
+
         // For inputting
         $this->app->singleton(InputContract::class, InputProvider::class);
 
