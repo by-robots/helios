@@ -2,6 +2,7 @@
 
 namespace App\Modules\Interpret;
 
+use App\Modules\Actions\DanHub\Download as DownloadDanHub;
 use App\Modules\Actions\Debugging;
 use App\Modules\Actions\Weather\Weather;
 use League\Container\Container;
@@ -27,6 +28,9 @@ class Web implements Interpret
     public function __construct()
     {
         $this->web = [
+            'download' => [
+                'danhub' => app(DownloadDanHub::class),
+            ],
             'get' => [
                 'weather' => app(Weather::class),
             ],
