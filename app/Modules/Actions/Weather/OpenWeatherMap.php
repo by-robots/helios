@@ -10,41 +10,6 @@ use Cmfcmf\OpenWeatherMap as Service;
 class OpenWeatherMap implements Action, Weather
 {
     /**
-     * For outward communication.
-     *
-     * @var App\Modules\Output\Output
-     */
-    public $output;
-
-    /**
-     * For inward communication.
-     *
-     * @var App\Modules\Input\Input
-     */
-    public $input;
-
-    /**
-     * Helios' storage.
-     *
-     * @var App\Modules\Storage\Storage
-     */
-    public $storage;
-
-    /**
-     * Set-up everything we need.
-     *
-     * @param App\Modules\Output\Output   $output
-     * @param App\Modules\Storage\Storage $storage
-     *
-     * @return void
-     */
-    public function __construct(Output $output, Storage $storage)
-    {
-        $this->output  = $output;
-        $this->storage = $storage;
-    }
-
-    /**
      * Get the current weather of the given location.
      *
      * @param string $location
@@ -58,11 +23,11 @@ class OpenWeatherMap implements Action, Weather
         try {
             $weather = $service->getWeather($location, 'metric', 'en');
         } catch(\Exception $e) {
-            $this->output->write('Error: ' . $e->getMessage(), 'error');
+            app(Output::class)->write('Error: ' . $e->getMessage(), 'error');
             return;
         }
 
-        $this->output->write($weather->temperature->getValue() . ' Celcius, ' .
+        app(Output::class)->write($weather->temperature->getValue() . ' Celcius, ' .
             $weather->weather->description . '.');
     }
 
@@ -74,9 +39,9 @@ class OpenWeatherMap implements Action, Weather
     public function act()
     {
         try {
-            $location = $this->storage->get('user.location');
+            $location = app(Storage::class)->get('user.location');
         } catch (\Exception $e) {
-            $this->output->write('No location available. Defaulting to London, UK.');
+            app(Output::class)->write('No location available. Defaulting to London, UK.');
             $location = 'london';
         }
 
