@@ -100,4 +100,16 @@ $app->register(App\Providers\HeliosServiceProvider::class);
 //     require __DIR__.'/../routes/web.php';
 // });
 
+/*
+|--------------------------------------------------------------------------
+| Load Configuration Files
+|--------------------------------------------------------------------------
+|
+| Includes config files in the config/ directory. It's manual at the moment.
+| Long term I don't really want to use anything like this at all, I'll just use
+| Helios' onboard storage.
+|
+*/
+$app->configure('danhub');
+
 return $app;

@@ -1,12 +1,10 @@
 .env
 
-/.idea
-
-/database/memory.sqlite
-
 /Programs/*
 !/Programs/.gitkeep
 
-/Storage/memory.json
+/storage/danhub/*
+!/storage/danhub/.gitkeep
+/storage/memory.json
 
 /vendor
