@@ -81,6 +81,7 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Vinkla\GitLab\GitLabServiceProvider::class);
 $app->register(App\Providers\HeliosServiceProvider::class);
 
 /*
@@ -110,6 +111,6 @@ $app->register(App\Providers\HeliosServiceProvider::class);
 | Helios' onboard storage.
 |
 */
-$app->configure('danhub');
+$app->configure('gitlab');
 
 return $app;

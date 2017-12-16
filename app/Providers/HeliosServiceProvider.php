@@ -4,6 +4,8 @@ namespace App\Providers;
 
 use App\Modules\Actions\Weather\OpenWeatherMap as WeatherProvider;
 use App\Modules\Actions\Weather\Weather as WeatherContract;
+use App\Modules\DanHub\API as DanHubProvider;
+use App\Modules\DanHub\DanHub as DanHubContract;
 use App\Modules\Debugging;
 use App\Modules\Input\Input as InputContract;
 use App\Modules\Input\Terminal as InputProvider;
@@ -47,6 +49,9 @@ class HeliosServiceProvider extends ServiceProvider
 
         // Sentence Interpretation
         $this->app->singleton(InterpretContract::class, InterpretProvider::class);
+
+        // DanHub Integration
+        $this->app->singleton(DanHubContract::class, DanHubProvider::class);
 
         /** ********** ********** **********
          * Interpretation Actions
