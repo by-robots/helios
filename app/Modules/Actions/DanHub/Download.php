@@ -20,6 +20,9 @@ class Download implements Action
         $repos = app(DanHub::class)->listProjects();
 
         app(Output::class)->write('Retrieved ' . count($repos) . ' repositories.');
+        app(Output::class)->write('Download may take a while.', 'comment');
+        app(Output::class)->write('Beginning.');
+
         foreach ($repos as $repo) {
             $this->_fetch($repo['name'], $repo['ssh_url_to_repo']);
         }
@@ -39,12 +42,12 @@ class Download implements Action
     {
         if (file_exists(config('gitlab.storage') . '/' . $name)) {
             // Just update what we have
-            app(Output::class)->write('Updating ' . $name);
+            app(Output::class)->write('Existing repository: ' . $name . '. Updating.');
             shell_exec('cd ' . config('gitlab.storage') . '/' . $name . ' && git remote update');
             return;
         }
 
-        app(Output::class)->write('Cloning ' . $name);
+        app(Output::class)->write('New repository: ' . $name . '. Cloning.');
         shell_exec('cd ' . config('gitlab.storage') . ' && git clone --mirror ' . $repo . ' ' . $name);
         return;
     }

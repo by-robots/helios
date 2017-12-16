@@ -33,8 +33,7 @@ class Helios extends Command
      */
     public function handle()
     {
-        app(Output::class)->write('I am awake.');
-
+        app(Output::class)->write('Started.', 'comment');
         if (app('setup')->shouldRun()) {
             app('setup')->run();
         }
@@ -63,7 +62,7 @@ class Helios extends Command
     private function _commsLoop()
     {
         while (true) {
-            $input = app(Input::class)->request('What can I do for you?');
+            $input = app(Input::class)->request('>');
 
             switch ($input) {
                 case 'goodbye':
@@ -76,7 +75,8 @@ class Helios extends Command
                     try {
                         $execute = app(Interpret::class)->try($sentence);
                     } catch (\Exception $e) {
-                        app(Output::class)->write('No action available. Input not understood or invalid.', 'error');
+                        app(Output::class)->write('No action available. ' .
+                            'Input not understood or invalid.', 'error');
                     }
 
                     if (isset($execute)) {
@@ -94,6 +94,6 @@ class Helios extends Command
      */
     private function _goToSleep()
     {
-        app(Output::class)->write('Shutting down.');
+        app(Output::class)->write('Closing.');
     }
 }
