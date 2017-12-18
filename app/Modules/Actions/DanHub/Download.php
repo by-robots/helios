@@ -24,7 +24,7 @@ class Download implements Action
         app(Output::class)->write('Beginning.');
 
         foreach ($repos as $repo) {
-            $this->_fetch($repo['name'], $repo['ssh_url_to_repo']);
+            $this->_fetch($repo['path_with_namespace'], $repo['ssh_url_to_repo']);
         }
     }
 
