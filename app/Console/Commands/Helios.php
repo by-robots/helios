@@ -62,7 +62,7 @@ class Helios extends Command
     private function _commsLoop()
     {
         while (true) {
-            $input = app(Input::class)->request('>');
+            $input = app(Input::class)->request('What do?');
 
             switch ($input) {
                 case 'goodbye':

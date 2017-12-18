@@ -40,15 +40,20 @@ class Download implements Action
      */
     private function _fetch($name, $repo)
     {
-        if (file_exists(config('gitlab.storage') . '/' . $name)) {
+        $pathName = str_replace(' ', '\ ', $name);
+        if (file_exists(config('gitlab.storage') . '/' . $pathName)) {
             // Just update what we have
-            app(Output::class)->write('Existing repository: ' . $name . '. Updating.');
-            shell_exec('cd ' . config('gitlab.storage') . '/' . $name . ' && git remote update');
+            app(Output::class)->write('Existing repository: ' . $name .
+                '. Updating.');
+            shell_exec('cd ' . config('gitlab.storage') . '/' . $pathName .
+                ' && git remote update');
             return;
         }
 
         app(Output::class)->write('New repository: ' . $name . '. Cloning.');
-        shell_exec('cd ' . config('gitlab.storage') . ' && git clone --mirror ' . $repo . ' ' . $name);
+        shell_exec('cd ' . config('gitlab.storage') .
+            ' && git clone --mirror ' . $repo . ' ' . $pathName);
+
         return;
     }
 }
